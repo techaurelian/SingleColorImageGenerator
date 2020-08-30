@@ -19,8 +19,10 @@ class MainActivity : Activity(), AdapterView.OnItemClickListener {
         get() = NamedColor.values().map {
             mapOf(
                 MAP_COLOR to ColorUtils.fullAlpha(it.rgb),
-                MAP_NAME to it.name,
-                MAP_CODE to ColorUtils.colorToHex(it.rgb)
+//                MAP_NAME to "Create ${it.name}1920x1080.png",
+                MAP_NAME to "Create",
+//                MAP_CODE to ColorUtils.colorToHex(it.rgb)
+                MAP_CODE to "${it.name}1920x1080.png"
             )
         }
 
