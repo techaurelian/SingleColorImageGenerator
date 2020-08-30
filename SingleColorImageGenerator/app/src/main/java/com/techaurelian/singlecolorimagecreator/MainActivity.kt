@@ -2,22 +2,25 @@ package com.techaurelian.singlecolorimagecreator
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.SimpleAdapter
+import com.techaurelian.singlecolorimagecreator.utils.ColorUtils
 
 internal const val MAP_COLOR = "color"
 internal const val MAP_NAME = "name"
 internal const val MAP_CODE = "code"
 
-class MainActivity : Activity() {
+class MainActivity : Activity(), AdapterView.OnItemClickListener {
 
     private val adapterData
         get() = NamedColor.values().map {
             mapOf(
-                MAP_COLOR to fullAlpha(it.rgb),
+                MAP_COLOR to ColorUtils.fullAlpha(it.rgb),
                 MAP_NAME to it.name,
-                MAP_CODE to colorToHex(it.rgb)
+                MAP_CODE to ColorUtils.colorToHex(it.rgb)
             )
         }
 
@@ -51,5 +54,9 @@ class MainActivity : Activity() {
         // Set the list view adapter and the on item click listener
         listView.adapter = adapter
         listView.onItemClickListener = this
+    }
+
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//        TODO("Not yet implemented")
     }
 }
